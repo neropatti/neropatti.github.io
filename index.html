@@ -1,7 +1,42 @@
 <!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 <html>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages. test test</p>
+<p>Why are you here?? This site is still under construction! Well, since you're here, feel free to read anyway.
+    But do keep in mind that this is still a work-in-progress!
+</p>
+<h1>Hi, I'm neropatti</h1>
+<p>Decided to set up a page for myself! Keeping it simple for now.</p>
+<p>I'm just an average Finnish dude who likes programming & playing video games.</p>
+<p>I do have some <a href=https://neropatti.itch.io>released games</a>, but below you can find more examples of my work.</p>
+<br>
+<h1>Projects</h1>
+<h2>Seamless</h2>
+<p>Seamless is a minimalistic 2D puzzle-platformer where different coloured boxes form the enviroment.</p>
+<video autoplay muted loop width=80% tabindex="-1">
+    <source src="media/seamless/1.webm" type="video/webm">
+Your browser does not want to play my awesome video file :(
+</video>
+<p>I wrote a custom collision system to handle these collisions.</p>
+<p>There are 2 types of colliders: Holes & Boxes. Holes define the inbounds space. The player has to be enclosed by the inbounds
+    space every tick; if they aren't, they are pushed back inside. This sounds relatively simple, until you consider that you don't 
+    necessarily have to be enclosed by any <em>single</em> hole to be inbounds.
+</p>
+<img src="media/seamless/inbounds.webp" width="300" alt="The player character inbetween 2 holes, fully inbounds">
+<p>The collision detection is discrete, but the physics ticks are split into multiple sub-ticks if the relative speed between
+    the player and the enviroment is too large. This collision system will handle basically anything you can think of
+    to throw at it; and come out looking good.
+</p>
+<video autoplay muted loop width=80% tabindex="-1">
+    <source src="media/seamless/2.webm" type="video/webm">
+Your browser does not want to play my awesome video file :(
+</video>
+<p>However, there is one big limitation. For example, every collider in Seamless is an axis-alinged rectangle.</p>
+<video autoplay muted loop width=80% tabindex="-1">
+    <source src="media/seamless/3.webm" type="video/webm">
+Your browser does not want to play my awesome video file :(
+</video>
 </body>
 </html>
