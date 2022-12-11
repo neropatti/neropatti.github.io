@@ -1,0 +1,2 @@
+Videos generally encoded with these arguments:
+ffmpeg -ss 00:00:00.00 -to 00:00:00.00 -i in.mp4 -movflags +faststart -an -c libaom-av1 "out.webm"
