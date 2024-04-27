@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+<h1>Projects</h1>
+<h2>Seamless</h2>
+<p>Seamless is a minimalistic 2D puzzle-platformer where different coloured boxes form the enviroment.</p>
+<video autoplay muted loop width=80% tabindex="-1">
+    <source src="media/1.webm" type="video/webm">
+Your browser does not want to play my awesome video file :(
+</video>
+<p>I wrote a custom collision system to handle these collisions.</p>
+<p>There are 2 types of colliders: Holes & Boxes. Holes define the inbounds space. The player has to be enclosed by the inbounds
+    space every tick; if they aren't, they are pushed back inside. This sounds relatively simple, until you consider that you don't 
+    necessarily have to be enclosed by any <em>single</em> hole to be inbounds.
+</p>
+<img src="media/inbounds.webp" width="300" alt="The player character inbetween 2 holes, fully inbounds">
+<p>The collision detection is discrete, but the physics ticks are split into multiple sub-ticks if the relative speed between
+    the player and the enviroment is too large. This collision system will handle basically anything you can think of
+    to throw at it, and come out looking good.
+</p>
+<video autoplay muted loop width=80% tabindex="-1">
+    <source src="media/2.webm" type="video/webm">
+Your browser does not want to play my awesome video file :(
+</video>
+<p>However, there is one big limitation. Every collider in Seamless has to be an axis-alinged rectangle.
+    I have thought about expanding or even re-writing the system to support polygons, but it's not worth
+    the time investment and added complexity. Maybe in the future.
+</p>
+<video autoplay muted loop width=80% tabindex="-1">
+    <source src="media/3.webm" type="video/webm">
+Your browser does not want to play my awesome video file :(
+</video>
+<p>However, even with the enviroment being all rectangles, you can make some pretty interesting levels.</p>
+<br>
+</body>
+</html>

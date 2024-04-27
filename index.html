@@ -4,56 +4,15 @@
 </head>
 <html>
 <body>
-<h1>Hi, I'm neropatti</h1>
-<p>Decided to set up a page for myself! Keeping it simple for now.</p>
-<p>I'm just an average Finnish dude who likes programming & playing video games.</p>
-<p>I do have some <a href=https://neropatti.itch.io>released games</a>, but below you can find more examples of my work.</p>
+<h1>neropatti</h1>
+<p>Hi, I'm neropatti, or nero for short.</p>
+<p>I (try to) make video games.</p>
+<!--<p>I have some <a href=https://neropatti.itch.io>released games</a>, but below you can find more examples of my work.</p>-->
 <br>
-<h1>Projects</h1>
-<h2>Seamless</h2>
-<p>Seamless is a minimalistic 2D puzzle-platformer where different coloured boxes form the enviroment.</p>
-<video autoplay muted loop width=80% tabindex="-1">
-    <source src="media/seamless/1.webm" type="video/webm">
-Your browser does not want to play my awesome video file :(
-</video>
-<p>I wrote a custom collision system to handle these collisions.</p>
-<p>There are 2 types of colliders: Holes & Boxes. Holes define the inbounds space. The player has to be enclosed by the inbounds
-    space every tick; if they aren't, they are pushed back inside. This sounds relatively simple, until you consider that you don't 
-    necessarily have to be enclosed by any <em>single</em> hole to be inbounds.
-</p>
-<img src="media/seamless/inbounds.webp" width="300" alt="The player character inbetween 2 holes, fully inbounds">
-<p>The collision detection is discrete, but the physics ticks are split into multiple sub-ticks if the relative speed between
-    the player and the enviroment is too large. This collision system will handle basically anything you can think of
-    to throw at it, and come out looking good.
-</p>
-<video autoplay muted loop width=80% tabindex="-1">
-    <source src="media/seamless/2.webm" type="video/webm">
-Your browser does not want to play my awesome video file :(
-</video>
-<p>However, there is one big limitation. Every collider in Seamless has to be an axis-alinged rectangle.
-    I have thought about expanding or even re-writing the system to support polygons, but it's not worth
-    the time investment and added complexity. Maybe in the future.
-</p>
-<video autoplay muted loop width=80% tabindex="-1">
-    <source src="media/seamless/3.webm" type="video/webm">
-Your browser does not want to play my awesome video file :(
-</video>
-<p>However, even with the enviroment being all rectangles, you can make some pretty interesting levels.</p>
-<br>
-<h2>Abyss Trail</h2>
-<a href="https://neropatti.itch.io/abyss-trail"><p>Play Abyss Trail</p></a>
-<p>Abyss trail was my submission to the 7th Brackeys game jam. It placed #234 out of 1606 total entries overall.</p>
-<a href="https://itch.io/jam/brackeys-7/rate/1415406"><img src="media/abyss trail/ratings.webp" width="300" alt="Abyss trail ratings"></a>
-<p>I had entered one jam before, but didn't manage to finish in time.
-    With Abyss Trail, I really focused on keeping the scope under control.
-    The game turned out quite simple, but I was happy with it.
-</p>
-<video autoplay muted loop controls width=80% tabindex="-1">
-    <source src="media/abyss trail/1.webm" type="video/webm">
-Your browser does not want to play my awesome video file :(
-</video>
-<p>The music was composed by <a href="https://maximusmorrow.wixsite.com/my-site">MaximusCXI</a>.</p>
-<br><br><br><br><br><br>
-<p>You've found the end of the page! I'll be writing more here when I have the energy. For now, go do something else. Shush.</p>
+<a href="https://neropatti.com/abyss-trail"><img src="abyss-trail/media/game_icon.webp" width="300" alt="Abyss Trail logo"></a>
+<a href="https://neropatti.com/seamless"><img src="seamless/media/game_icon.webp" width="300" alt="Seamless logo"></a>
+<a href="https://neropatti.com/tic-tac-toe"><img src="tic-tac-toe/media/game_icon.webp" width="300" alt="Tic-tac-toe logo"></a>
+<a href="https://neropatti.com/stream"><img src="stream/media/image.webp" width="300" alt="Livestream!"></a>
+<a href="https://neropatti.com/ammo-percentage-indicator"><img src="ammo-percentage-indicator/media/logo_small.webp" width="300" alt="Ammo percentage indicator logo"></a>
 </body>
 </html>
