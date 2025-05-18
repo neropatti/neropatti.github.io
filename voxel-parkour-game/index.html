@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+<p>Page published <time datetime="2025-01-18">2025.01.18</time> &amp; last updated <time datetime="2025-05-18">2025.05.18</time></p>
+<h1>Voxel parkour game</h1>
+
+<p>No game engine. Just a dream, Rust, and a few libraries.</p>
+
+<video autoplay muted loop width=80% tabindex="-1">
+    <source src="media/1.webm" type="video/webm">
+Your browser does not want to play my awesome video file :(
+</video>
+<p>The movement mechanics have been finely crafted so that the gameplay is simple to pick up and enjoy, but hard to master. You can either hop around casually and get into the flow, or optimize every small movement. It&apos;s up to you.</p>
+<p>The current name is a working title. I&apos;ll come up with a proper name once the game is a bit more fleshed out.</p>
+<p>There is a lot to work on -- the graphics, the audio, the map design, environments for the maps, the underlying systems holding everything together... But, the game gets better, one small step at a time.</p>
+<p>If you want to see the development of this game live, <a href="https://neropatti.com/stream">check me out on Twitch!</a> I&apos;m live every Saturday at 3AM GMT.</p>
+
+<h2>Technical details</h2>
+<p>This project is written in Rust. I use <a href="https://docs.rs/wgpu/latest/wgpu/">wgpu</a> &amp; <a href="https://docs.rs/winit/latest/winit/">winit</a> as my main libraries.</p>
+<p>If you want to learn wgpu, check out this awesome tutorial: <a href="https://sotrh.github.io/learn-wgpu/">https://sotrh.github.io/learn-wgpu</a></p>
+<p>I render the world with raytracing. I wrote the raytracing shader myself, although I have taken heavy inspiration for multiple voxel-engine youtubers. One of my main learning resources has been <a href="https://www.youtube.com/@DouglasDwyer/">Douglas</a>. There are optimizations that he has made videos on that I have not yet implemented, and I am really grateful for all of his work.</p>
+</body>
+</html>
