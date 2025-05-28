@@ -24,3 +24,10 @@ a:hover {
 a:active {
     color: hotpink
 }
+
+.watermark {
+    opacity: 0.125;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+}
