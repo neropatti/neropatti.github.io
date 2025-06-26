@@ -2,5 +2,5 @@ Videos generally encoded with these arguments:
 ffmpeg -ss 00:00:00.00 -to 00:00:00.00 -i in.mp4 -movflags +faststart -an -c:v libaom-av1 "out.webm"
 
 26.06.2025 voxel parkour showcase video encode command:
-ffmpeg -ss 1:39.74 -to 1:55.7 -i map1.mkv -ss 1:24 -to 1:55.6 -i map2.mkv -ss 1:24 -to 1:55.24 -i map3.mkv -i linkwatermark.png -filter_complex "[0:v:0][1:v:0][2:v:0]concat=n=3:v=1[outv],[outv][3:v] overlay=0:0" -c:v libaom-av1 out.webm
+ffmpeg -ss 1:39.74 -to 1:55.7 -i map1.mkv -ss 1:24 -to 1:55.6 -i map2.mkv -ss 1:24 -to 1:55.24 -i map3.mkv -i linkwatermark.png -filter_complex "[0:v:0][1:v:0][2:v:0]concat=n=3:v=1[outv],[outv][3:v] overlay=0:0" -crf 35 -an -movflags +faststart crftest/crf35.webm
 
