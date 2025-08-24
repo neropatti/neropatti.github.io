@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+<div class="watermark">
+<a href="https://neropatti.com/"><img src="../watermark.webp"></a>
+</div>
+<h1>Git for Godot beginners</h1>
+<p>Looks like you&apos;ve started your Godot journey! You&apos;ll have a lot to learn, and you will make plenty of mistakes. Git will help you keep track of changes to your project, and revert to previous snapshots.</p>
+<p>To use Git, I&apos;d heavily recommend using a graphical git-client. The one I will be using in this guide is <a href="https://github.com/apps/desktop">GitHub Desktop</a>.</p>
+<p>Git can also be used to collaborate with others, but more on that later. First we&apos;ll go over the basics.</p>
+<h2>Git is not GitHub</h2>
+<p>Git is a really useful piece of software, originally developed by Linus Torvalds.</p>
+<p>GitHub is a website/platform, and Git is a central part of how GitHub works. However, GitHub is <em>not</em> associated with Git itself. There are plenty of other websites like GitHub, like GitLab & Codeberg.</p>
+<p>GitHub Desktop is a graphical git-client. That just means that you can click buttons in a neat app instead of having to type commands on the command-line.</p>
+
+<h2>Getting started</h2>
+<h3>Installing GitHub Desktop</h3>
+<p>First, download and install GitHub Desktop. You don&apos;t need an account to get started, the program can be used 100% locally.</p>
+<p>I might expand this section later. The installer should be friendly enough, but if you encounter an issue or have questions, ask someone for help! (For example, the person who linked you this page ^^)</p>
+
+<h3>Setting up your repository</h3>
+<p>A <em>repository</em> is really just a fancy name for a folder with Git version control in it. Once you have version control enabled, you can use GitHub Desktop to see what files have changed since the latest commit. The program doesn&apos;t have to be open for this tracking to work; as long as you don&apos;t delete the ".git" folder that holds the version control data, everything will work just fine.</p>
+
+<h4>.gitignore</h4>
+<p>A .gitignore file tells Git which files to ignore, and therefore keep out of the version control history. We&apos;ll want to tell Git to ignore the .godot folder in our project, as it contains automatically generated cache files and other things like that.</p>
+<p>Godot actually places a .gitignore file into your project by default, so most likely you don&apos;t have to worry about this! If you don&apos;t have a gitignore file for whatever reason, you&apos;ll need to create one. Make sure you have file extensions visible, as we&apos;ll need to make a file that doesn&apos;t have a file extension.</p>
+<p>Once you have file extensions visible, create a file called .gitignore (<em>not</em> .gitignore.txt), and write the following into the file with notepad:</p>
+<p>.godot/</p>
+<p>...and you&apos;re done!</p>
+
+<h4>Actually creating the repository</h4>
+<p>First and foremost: do <em>NOT</em> use the "Create new repository" -button!</p>
+<p>GitHub Desktop really does not want to use an existing folder for a new repository, so we have to create the repo in a roundabout way.</p>
+<ol>
+    <li>Click File&gt;Add local repository<br><img src="media/0.webp"></li>
+    <li>Navigate to your project folder &amp; select it</li>
+    <li>You&apos;ll see an error pop up saying that the folder is not a repository. Click the blue link saying "create a repository" in the error.<br><img src="media/1.webp"></li>
+    <li>Do not change any of the settings &amp; click "Create repository".</li>
+</ol>
+<p>And you have your repository set up!</p>
+
+<h2>This guide is not complete</h2>
+<p>From here on out, you&apos;re on your own. Or, you can ask help from the person who linked you this page!</p>
+<p>In any case, I will be extending this article/tutorial/whatever when I get a chance to.</p>
+
+
+
+<script src="../script.js"></script>
+</body>
+</html>
