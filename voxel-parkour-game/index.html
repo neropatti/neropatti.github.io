@@ -7,28 +7,29 @@
 <div class="watermark">
 <a href="https://neropatti.com/"><img src="../watermark.webp"></a>
 </div>
-<p>Page published <time datetime="2025-01-18">2025.01.18</time> &amp; last updated <time datetime="2025-06-26">2025.06.26</time></p>
+<p>Page published <time datetime="2025-01-18">2025.01.18</time> &amp; last updated <time datetime="2026-02-18">2026.02.18</time></p>
 <h1>Voxel parkour game</h1>
-
-<p>No game engine. Just a dream, Rust, and a few libraries.</p>
-<p>I livestream the development of this game on <a href="https://neropatti.com/stream">twitch</a> occasionally.</p>
-
 <video autoplay muted controls neropatti_disable_controls loop width=80% tabindex="-1">
     <source src="media/1.webm" type="video/webm">
 Your browser does not want to play my awesome video file :(
 </video>
-<p>The movement mechanics have been finely crafted so that the gameplay is simple to pick up and enjoy, but hard to master. You can either hop around casually and get into the flow, or optimize every small movement. It&apos;s up to you.</p>
-<p>The current name is a working title. I&apos;ll come up with a proper name once the game is a bit more fleshed out.</p>
+<p>I livestream the development of this game on <a href="https://neropatti.com/stream">twitch</a> every Saturday at 6AM Helsinki time.</p>
+<p>This game is going through a bit of an identity crisis right now. Or, I guess it would be more accurate to say that I&apos;m considering pivoting to another type of game...</p>
+<p>I don&apos;t know how it happened, but I suddenly found myself implementing multiplayer. It&apos;s pretty close to being done as well! My dreams of making a 3D-platform-fighting-game seem more achievable than the original vision for this game, which feels a bit strange.</p>
+<p>Anyway, once multiplayer has been added and polished, I will start thinking about the direction to go next. The initial implementation took around 2 weeks, but the polishing phase might take 2-6... Will see!</p>
 <p>There is a lot to work on -- the graphics, the audio, the map design, environments for the maps, the underlying systems holding everything together... But, the game gets better, one small step at a time.</p>
 
+<!---
 <h2>Can I playtest??</h2>
 <p>The game is not ready for playtesting as of right now! Once I need playtesters, I&apos;ll update this page.</p>
 <p>Though, you&apos;re always free to hop on the <a href="https://neropatti.com/stream">stream</a> or <a href="https://neropatti.com/stream/discord">discord server</a> and ask anyway, as I might forget to update this page :b</p>
+--->
 
 <h2>Technical details</h2>
 <p>This project is written in Rust. I use <a href="https://docs.rs/wgpu/latest/wgpu/">wgpu</a> &amp; <a href="https://docs.rs/winit/latest/winit/">winit</a> as my main libraries.</p>
 <p>If you want to learn wgpu, check out this awesome tutorial: <a href="https://sotrh.github.io/learn-wgpu/">https://sotrh.github.io/learn-wgpu</a></p>
-<p>I render the world with raytracing. I wrote the raytracing shader myself, although I have taken heavy inspiration for multiple voxel-engine youtubers. One of my main learning resources has been <a href="https://www.youtube.com/@DouglasDwyer/">Douglas</a>. There are optimizations that he has made videos on that I have not yet implemented, and I am really grateful for all of his work.</p>
+<p>I used to render the world with raytracing. One of my main learning resources for that was <a href="https://www.youtube.com/@DouglasDwyer/">Douglas</a>. The current rendering implementation uses good &apos;ol boring triangles. (The video above is from the raytracing days, but the current game looks essentially the same)</p>
+<p>I am not using a 3rd-party physics/collision detection library. All of the gameplay code has been written by me: partly because I want to be absolutely sure that it&apos;s deterministic so I can have demo files (fancy name for input replays) and have the netcode not have to send game-state over the internet</p>
 <script src="../script.js"></script>
 </body>
 </html>
