@@ -26,6 +26,7 @@ for (const child of buttons.children) {
 }
 
 function click(event) {
+    event.preventDefault();
     //console.log(event.target, "was clicked!");
     let order_identifier = this;
     if (order_identifier == "--- CLEAR ---") {
