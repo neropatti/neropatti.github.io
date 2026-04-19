@@ -1,0 +1,104 @@
+body {
+    background-color:#28302d;
+    color: #f2e5fff5;
+
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+}
+
+a:link {
+    color:#86b3ef
+}
+
+a:visited {
+    color:#c18beb
+}
+
+a:hover {
+    color:#d686ef
+}
+
+a:active {
+    color: hotpink
+}
+
+.itembutton1 {
+    position: fixed;
+    height: 45%;
+    width: 33.333%;
+    top: 10%;
+    background-color: hotpink;
+}
+
+.itembutton2 {
+    position: fixed;
+    height: 45%;
+    width: 33.333%;
+    left: 33.333%;
+    top: 10%;
+    background-color: hotpink;
+}
+
+.itembutton3 {
+    position: fixed;
+    height: 45%;
+    width: 33.333%;
+    left: 66.666%;
+    top: 10%;
+    background-color: hotpink;
+}
+
+.itembutton4 {
+    position: fixed;
+    height: 45%;
+    width: 33.333%;
+    top: 55%;
+    background-color: hotpink;
+}
+
+.itembutton5 {
+    position: fixed;
+    height: 45%;
+    width: 33.333%;
+    left: 33.333%;
+    top: 55%;
+    background-color: hotpink;
+}
+
+.itembutton6 {
+    position: fixed;
+    height: 45%;
+    width: 33.333%;
+    left: 66.666%;
+    top: 55%;
+    background-color: hotpink;
+}
+
+.clearbutton {
+    position: fixed;
+    height: 10%;
+    width: 33.333%;
+    left: 66.666%;
+    top: 0px;
+    z-index: 1;
+    background-color: red;
+}
+
+.tallyandorder {
+    position: fixed;
+    height: 10%;
+    width: 66.666%;
+    top: 0px;
+}
+
+.watermark {
+    opacity: 0.75;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+}
