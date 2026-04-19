@@ -102,3 +102,7 @@ a:active {
     bottom: 20px;
     right: 40px;
 }
+
+* {
+    touch-action: manipulation;
+}
