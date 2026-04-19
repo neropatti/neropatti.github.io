@@ -103,6 +103,11 @@ a:active {
     right: 40px;
 }
 
+.calculator {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 * {
     touch-action: manipulation;
 }
