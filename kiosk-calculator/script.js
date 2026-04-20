@@ -27,11 +27,14 @@ for (const child of buttons.children) {
     console.log(child.tagName);
     child.addEventListener("click", click.bind(items[ii]));
     if (ii != 6) {
-            const text_node = document.createTextNode("  - " + items[ii] + " (0) +  ");
+            const item = items[ii];
+            const text_node = document.createTextNode("  - " + item + " (0) +  ");
             const text_node_2 = document.createTextNode("( 0€ )");
             child.appendChild(text_node);
             child.appendChild(document.createElement("br"));
             child.appendChild(text_node_2);
+            child.appendChild(document.createElement("br"));
+            child.appendChild(document.createTextNode(prices[item] + "€ per kpl"));
             text_nodes[items[ii]] = [text_node, text_node_2];
     }
     //child.append(paragraph);
