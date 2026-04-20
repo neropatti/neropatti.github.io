@@ -33,6 +33,9 @@ a:active {
     width: 33.333%;
     top: 10%;
     background-color: hotpink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .itembutton2 {
@@ -41,7 +44,10 @@ a:active {
     width: 33.333%;
     left: 33.333%;
     top: 10%;
-    background-color: hotpink;
+    background-color: magenta;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .itembutton3 {
@@ -51,6 +57,9 @@ a:active {
     left: 66.666%;
     top: 10%;
     background-color: hotpink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .itembutton4 {
@@ -58,7 +67,10 @@ a:active {
     height: 45%;
     width: 33.333%;
     top: 55%;
-    background-color: hotpink;
+    background-color: magenta;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .itembutton5 {
@@ -68,6 +80,9 @@ a:active {
     left: 33.333%;
     top: 55%;
     background-color: hotpink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .itembutton6 {
@@ -76,7 +91,10 @@ a:active {
     width: 33.333%;
     left: 66.666%;
     top: 55%;
-    background-color: hotpink;
+    background-color: magenta;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .clearbutton {
@@ -87,6 +105,9 @@ a:active {
     top: 0px;
     z-index: 1;
     background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tallyandorder {
