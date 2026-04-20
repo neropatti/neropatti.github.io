@@ -28,8 +28,11 @@ for (const child of buttons.children) {
     child.addEventListener("click", click.bind(items[ii]));
     if (ii != 6) {
             const text_node = document.createTextNode("  - " + items[ii] + " (0) +  ");
+            const text_node_2 = document.createTextNode("( 0€ )");
             child.appendChild(text_node);
-            text_nodes[items[ii]] = text_node;
+            child.appendChild(document.createElement("br"));
+            child.appendChild(text_node_2);
+            text_nodes[items[ii]] = [text_node, text_node_2];
     }
     //child.append(paragraph);
     ii += 1;
@@ -39,7 +42,6 @@ function click(event) {
     event.preventDefault();
     //console.log(event.target, "was clicked!");
     let click_x_pos = event.offsetX / event.target.clientWidth;
-    console.log("HPOS: ", click_x_pos);
     let order_identifier = this;
     if (order_identifier == "--- CLEAR ---") {
         clear_order()
@@ -50,21 +52,21 @@ function click(event) {
             order_amounts[order_identifier] = Math.max(0, order_amounts[order_identifier] - 1);
         }
     }
-    console.log("Current order:", order_amounts);
+    //console.log("Current order:", order_amounts);
     let price = 0;
     let order_text = "";
-    console.log(text_nodes);
     for (const [item, amount] of Object.entries(order_amounts)) {
         if (item == "--- CLEAR ---") {
             continue;
         }
-        console.log(item);
-        var text_node = text_nodes[item];
+        var [text_node, text_node_2] = text_nodes[item];
         text_node.nodeValue = "  - " + item + " (" + amount + ") +  ";
+        let item_price = prices[item] * amount
+        text_node_2.nodeValue = "( " + item_price + "€ )"
+        price += item_price;
         if (amount == 0) {
             continue;
         }
-        price += prices[item] * amount;
         order_text += item + " x" + amount + ", ";
     }
     tallyandorder.innerText = price + "€ " + order_text;
