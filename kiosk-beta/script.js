@@ -17,6 +17,15 @@ const prices = {
     "sade": 500,
     "--- CLEAR ---": 0.5,
 };
+const emojis = {
+    "kahvi": "☕️",
+    "pulla": "🍰️",
+    "koira": "🐶️",
+    "kissa": "🐈️",
+    "sammakko": "🐸️",
+    "sade": "🌧️",
+    "--- CLEAR ---": "❌️",
+};
 var text_nodes = {};
 
 const tallyandorder = document.getElementById("tallyandorder");
@@ -33,12 +42,15 @@ for (const child of item_buttons.children) {
             const item = items[ii];
             const text_node = document.createTextNode("  - " + item + " (0) +  ");
             const text_node_2 = document.createTextNode("( 0€ )");
+            const text_node_3 = document.createTextNode("");
+            child.appendChild(text_node_3);
+            child.appendChild(document.createElement("br"));
             child.appendChild(text_node);
             child.appendChild(document.createElement("br"));
             child.appendChild(text_node_2);
             child.appendChild(document.createElement("br"));
             child.appendChild(document.createTextNode(prices[item] + "€ per kpl"));
-            text_nodes[items[ii]] = [text_node, text_node_2];
+            text_nodes[items[ii]] = [text_node, text_node_2, text_node_3];
     }
     //child.append(paragraph);
     ii += 1;
@@ -104,11 +116,12 @@ function click_item(event) {
         if (item == "--- CLEAR ---") {
             continue;
         }
-        var [text_node, text_node_2] = text_nodes[item];
+        let [text_node, text_node_2, text_node_3] = text_nodes[item];
         text_node.nodeValue = "  - " + item + " (" + amount + ") +  ";
         let item_price = prices[item] * amount
         text_node_2.nodeValue = "( " + item_price + "€ )"
         price += item_price;
+        text_node_3.nodeValue = emojis[item].repeat(amount);
         if (amount == 0) {
             continue;
         }
