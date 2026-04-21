@@ -34,6 +34,7 @@ const price_fixing_button = document.getElementById("pricefixingbutton");
 price_fixing_button.addEventListener("click", priceadjust);
 
 function priceadjust() {
+    change_page.bind(2).call();
     console.log("TESTING TESTING");
     // TODO: Make the price changing page and switch to that when this button is clicked!!
 }
@@ -76,23 +77,31 @@ for (const child of vaihtoraha_buttons.children) {
 
 const page_change_buttons = [document.getElementById("tovaihtorahat"), document.getElementById("toitemshop")];
 
+ii = 0;
 for (const button of page_change_buttons) {
-    button.addEventListener("click", change_page);
+    let target_page = 1 - ii;
+    button.addEventListener("click", change_page.bind(target_page));
     console.log("LMAO");
+    ii += 1;
 }
 
-var current_page = 1;
-change_page();
+var current_page = 0;
+change_page.bind(0).call();
 
 function change_page() {
-    current_page = (current_page + 1) % 2;
+    current_page = this;
+    console.log(current_page);
     var page1style = "none";
     var page2style = "none";
+    var pricepagestyle = "none";
     if (current_page == 0) {
         page1style = "flex";
     }
     if (current_page == 1) {
         page2style = "flex";
+    }
+    if (current_page == 2) {
+        pricepagestyle = "flex";
     }
     for (child of page1.children) {
         child.style.display = page1style;
