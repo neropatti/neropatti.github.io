@@ -1,0 +1,181 @@
+body {
+    background-color:#28302d;
+    color: #f2e5fff5;
+
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+}
+
+a:link {
+    color:#86b3ef
+}
+
+a:visited {
+    color:#c18beb
+}
+
+a:hover {
+    color:#d686ef
+}
+
+a:active {
+    color: hotpink
+}
+
+.vaihtoraha {
+    display: none;
+}
+
+.itembutton1 , .itembutton2 , .itembutton3 , .itembutton4 , .itembutton5 , .itembutton6 {
+    position: fixed;
+    height: 45%;
+    width: 28.333%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.itembutton1 , .itembutton3 , .itembutton5 {
+    background-color: hotpink;
+}
+
+.itembutton2 , .itembutton4 , .itembutton6 {
+    background-color: magenta;
+}
+
+.itembutton1 , .itembutton2 , .itembutton3 {
+    top: 10%;
+}
+
+.itembutton1 , .itembutton4 {
+    left: 0%;
+}
+
+.itembutton2 , .itembutton5 {
+    left: 28.333%;
+}
+
+.itembutton3 , .itembutton6 {
+    left: 56.666%;
+}
+
+.itembutton4 , .itembutton5 , .itembutton6 {
+    top: 55%;
+}
+
+.tovaihtorahat {
+    position: fixed;
+    left: 85%;
+    top: 10%;
+    width: 15%;
+    height: 90%;
+    z-index: 1;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-lr;
+}
+
+.clearbutton , .vaihtorahaamount {
+    position: fixed;
+    height: 10%;
+    width: 33.333%;
+    left: 66.666%;
+    top: 0px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clearbutton {
+    background-color: red;
+}
+
+.tallyandorder {
+    position: fixed;
+    height: 10%;
+    width: 66.666%;
+    top: 0px;
+}
+
+.watermark {
+    opacity: 0.75;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+}
+
+.snt10 , .snt20 , .snt50 , .e1 , .e2 , .e5 , .e10 , .e20 , .e50 {
+    position: fixed;
+    height: 30%;
+    width: 28.333%;
+    background-color: magenta;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.snt10 , .snt50 , .e2 , .e10 , .e50 {
+    background-color: cadetblue;
+}
+
+
+.snt20 , .e1 , .e5 , .e20 {
+    background-color: mediumseagreen;
+}
+
+.snt10 , .e1 , .e10 {
+    left: 15%;
+}
+
+.snt20 , .e2 , .e20 {
+    left: 43.333%;
+}
+
+.snt50 , .e5 , .e50 {
+    left: 71.666%;
+}
+
+.snt10 , .snt20 , .snt50 {
+    top: 10%;
+}
+
+.e1 , .e2 , .e5 {
+    top: 40%;
+}
+
+.e10 , .e20 , .e50 {
+    top:70%;
+}
+
+.toitemshop {
+    position: fixed;
+    left: 0%;
+    top: 10%;
+    width: 15%;
+    height: 90%;
+    z-index: 1;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-lr;
+}
+
+.calculator {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+* {
+    touch-action: manipulation;
+}
