@@ -33,40 +33,40 @@ a:active {
 
 .itembutton1 , .itembutton2 , .itembutton3 , .itembutton4 , .itembutton5 , .itembutton6 {
     position: fixed;
-    height: 45%;
-    width: 28.333%;
+    height: 30%;
+    width: 42.5%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
-.itembutton1 , .itembutton3 , .itembutton5 {
+.itembutton1 , .itembutton4 , .itembutton5 {
     background-color: hotpink;
 }
 
-.itembutton2 , .itembutton4 , .itembutton6 {
+.itembutton2 , .itembutton3 , .itembutton6 {
     background-color: magenta;
 }
 
-.itembutton1 , .itembutton2 , .itembutton3 {
+.itembutton1 , .itembutton2 {
     top: 10%;
 }
 
-.itembutton1 , .itembutton4 {
+.itembutton3 , .itembutton4 {
+    top: 40%;
+}
+
+.itembutton5 , .itembutton6 {
+    top: 70%;
+}
+
+.itembutton1 , .itembutton3 , .itembutton5 {
     left: 0%;
 }
 
-.itembutton2 , .itembutton5 {
-    left: 28.333%;
-}
-
-.itembutton3 , .itembutton6 {
-    left: 56.666%;
-}
-
-.itembutton4 , .itembutton5 , .itembutton6 {
-    top: 55%;
+.itembutton2 , .itembutton4 , .itembutton6 {
+    left: 42.5%;
 }
 
 .tovaihtorahat {
@@ -174,6 +174,15 @@ a:active {
 .calculator {
     -webkit-user-select: none;
     user-select: none;
+}
+
+/* TODO: Just have a button for the price-setting page that's just a fullscreen text editor xdxd, this is the best method... 
+
+Could have that button appear when we have no items on the cart or something IDK!!
+*/
+.priceinput {
+    z-index: 1;
+    position: fixed;
 }
 
 * {
