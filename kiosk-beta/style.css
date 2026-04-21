@@ -104,6 +104,8 @@ a:active {
     height: 10%;
     width: 66.666%;
     top: 0px;
+    display: flex;
+    align-items: center;
 }
 
 .watermark {
