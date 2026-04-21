@@ -74,13 +74,25 @@ a:active {
     left: 85%;
     top: 10%;
     width: 15%;
-    height: 90%;
+    height: 80%;
     z-index: 1;
     background-color: red;
     display: flex;
     align-items: center;
     justify-content: center;
     writing-mode: vertical-lr;
+}
+
+.pricefixingbutton {
+    position:fixed;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 90%;
+    left: 85%;
+    width: 15%;
+    height: 10%;
 }
 
 .clearbutton , .vaihtorahaamount {

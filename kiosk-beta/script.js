@@ -29,6 +29,14 @@ const emojis = {
 var text_nodes = {};
 
 const tallyandorder = document.getElementById("tallyandorder");
+const price_fixing_button = document.getElementById("pricefixingbutton");
+
+price_fixing_button.addEventListener("click", priceadjust);
+
+function priceadjust() {
+    console.log("TESTING TESTING");
+    // TODO: Make the price changing page and switch to that when this button is clicked!!
+}
 
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
