@@ -83,6 +83,7 @@ function change_page() {
 }
 
 function click_item(event) {
+    document.getElementById("calculator").requestFullscreen();
     event.preventDefault();
     //console.log(event.target, "was clicked!");
     let click_x_pos = event.offsetX / event.target.clientWidth;
