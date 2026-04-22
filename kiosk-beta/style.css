@@ -83,7 +83,7 @@ a:active {
     writing-mode: vertical-lr;
 }
 
-.pricefixingbutton {
+.pricefixingbutton , .exitpricechange {
     position:fixed;
     background-color: blue;
     display: flex;

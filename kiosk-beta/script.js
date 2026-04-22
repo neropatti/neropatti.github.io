@@ -69,7 +69,6 @@ const vaihtoraha_buttons = document.getElementById("vaihtorahabuttons");
 
 ii = 0;
 for (const child of vaihtoraha_buttons.children) {
-    child.appendChild(document.createTextNode(ii));
     child.appendChild(document.createElement("br"));
     child.appendChild(document.createTextNode(ii));
     ii += 1;
@@ -85,6 +84,34 @@ for (const button of page_change_buttons) {
     ii += 1;
 }
 
+const pricepage = document.getElementById("pricepage");
+const price_change_text_field = document.createElement("textarea");
+price_change_text_field.style.display = "fixed"
+price_change_text_field.style.width = "100%";
+price_change_text_field.rows = 30;
+pricepage.appendChild(price_change_text_field);
+
+document.getElementById("exitpricechange").addEventListener("click", adjust_prices);
+
+function prepare_for_price_adjusting() {
+    let pricestring = "";
+    // TODO: Actually just make a unique numerical input field for each product, will be easier in reality XDXD
+    // Pushing this for now just to test it on mobile!!
+    // ALSO TODO: Store shit with cookies!! (and do vaihtorahat lmao)
+    for ([item, price] of Object.entries(prices)) {
+        if (item == "--- CLEAR ---") {
+            continue;
+        }
+        pricestring += item + ": " + String(price) + "\n";
+    }
+    price_change_text_field.value = pricestring;
+}
+
+function adjust_prices() {
+    console.log(price_change_text_field.value);
+    change_page.bind(0).call();
+}
+
 var current_page = 0;
 change_page.bind(0).call();
 
@@ -94,6 +121,7 @@ function change_page() {
     var page1style = "none";
     var page2style = "none";
     var pricepagestyle = "none";
+    var tallystyle = "flex";
     if (current_page == 0) {
         page1style = "flex";
     }
@@ -102,6 +130,8 @@ function change_page() {
     }
     if (current_page == 2) {
         pricepagestyle = "flex";
+        tallystyle = "none";
+        prepare_for_price_adjusting()
     }
     for (child of page1.children) {
         child.style.display = page1style;
@@ -109,6 +139,8 @@ function change_page() {
     for (child of page2.children) {
         child.style.display = page2style;
     }
+    tallyandorder.style.display = tallystyle;
+    pricepage.style.display = pricepagestyle;
 }
 
 function click_item(event) {
