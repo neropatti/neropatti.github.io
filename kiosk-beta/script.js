@@ -26,6 +26,7 @@ const emojis = {
     "sade": "🌧️",
     "--- CLEAR ---": "❌️",
 };
+const number_inputs = {};
 var text_nodes = {};
 
 const tallyandorder = document.getElementById("tallyandorder");
@@ -85,31 +86,68 @@ for (const button of page_change_buttons) {
 }
 
 const pricepage = document.getElementById("pricepage");
-const price_change_text_field = document.createElement("textarea");
-price_change_text_field.style.display = "fixed"
-price_change_text_field.style.width = "100%";
-price_change_text_field.rows = 30;
-pricepage.appendChild(price_change_text_field);
 
 document.getElementById("exitpricechange").addEventListener("click", adjust_prices);
 
+ii = 0;
+for ([item, price] of Object.entries(prices)) {
+    if (item == "--- CLEAR ---") {
+        continue;
+    }
+    let number_input = document.createElement("input");
+    number_inputs[item] = number_input;
+    let this_input_id = "numberpriceinput" + String(ii);
+    number_input.id = this_input_id;
+    let label = document.createElement("label");
+    label.htmlFor = this_input_id;
+    label.innerHTML = items[ii];
+    number_input.type = "number";
+    pricepage.appendChild(number_input);
+    pricepage.appendChild(label);
+    let button_count = 6;
+    let p = ii / button_count;
+    number_input.style.position = "fixed";
+    label.style.position = "fixed";
+    let totalbuttonareaheight = 90;
+    let add_y = (100 - totalbuttonareaheight) / 2;
+    let styletop = String(p * totalbuttonareaheight + add_y + 0.5) + "%";
+    let styleheight = String((totalbuttonareaheight * 0.9) / button_count) + "%";
+    number_input.style.top = styletop;
+    number_input.style.height = styleheight;
+    label.style.top = styletop;
+    //label.style.height = styleheight;
+    number_input.style.left = "20%";
+    // TODO: Retain reference to label
+    // TODO: Later use the label to grab the value from iiittt
+    // TODO: Position the label properly
+    // TODO: HAVE NAMES FOR THE LABELS!!
+    ii += 1;
+}
+
+console.log(number_inputs);
+
 function prepare_for_price_adjusting() {
-    let pricestring = "";
-    // TODO: Actually just make a unique numerical input field for each product, will be easier in reality XDXD
-    // Pushing this for now just to test it on mobile!!
-    // ALSO TODO: Store shit with cookies!! (and do vaihtorahat lmao)
     for ([item, price] of Object.entries(prices)) {
         if (item == "--- CLEAR ---") {
             continue;
         }
-        pricestring += item + ": " + String(price) + "\n";
+        let number_input = number_inputs[item];
+        number_input.value = price;
     }
-    price_change_text_field.value = pricestring;
 }
 
 function adjust_prices() {
-    console.log(price_change_text_field.value);
     change_page.bind(0).call();
+    for (item of items) {
+        if (item == "--- CLEAR ---") {
+            continue;
+        }
+        prices[item] = number_inputs[item].value;
+        // TODO: Validate if the value is actually a number
+        // TODO: Update the tally after the prices have been updates (low priority)
+        // TODO: Update the text saying how much each item costs ("1€ per kpl" for example)
+        // TODO: Store shit with cookies!! (and do vaihtorahat lmao)
+    }
 }
 
 var current_page = 0;
@@ -144,7 +182,7 @@ function change_page() {
 }
 
 function click_item(event) {
-    document.getElementById("calculator").requestFullscreen();
+    //document.getElementById("calculator").requestFullscreen();
     event.preventDefault();
     //console.log(event.target, "was clicked!");
     let click_x_pos = event.offsetX / event.target.clientWidth;
