@@ -27,93 +27,98 @@ a:active {
     color: hotpink
 }
 
-.itembutton1 {
+.vaihtoraha {
+    display: none;
+}
+
+.itembutton1 , .itembutton2 , .itembutton3 , .itembutton4 , .itembutton5 , .itembutton6 {
     position: fixed;
-    height: 45%;
-    width: 33.333%;
-    top: 10%;
+    height: 30%;
+    width: 42.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.itembutton1 , .itembutton4 , .itembutton5 {
     background-color: hotpink;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
 }
 
-.itembutton2 {
-    position: fixed;
-    height: 45%;
-    width: 33.333%;
-    left: 33.333%;
+.itembutton2 , .itembutton3 , .itembutton6 {
+    background-color: magenta;
+}
+
+.itembutton1 , .itembutton2 {
     top: 10%;
-    background-color: magenta;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
 }
 
-.itembutton3 {
+.itembutton3 , .itembutton4 {
+    top: 40%;
+}
+
+.itembutton5 , .itembutton6 {
+    top: 70%;
+}
+
+.itembutton1 , .itembutton3 , .itembutton5 {
+    left: 0%;
+}
+
+.itembutton2 , .itembutton4 , .itembutton6 {
+    left: 42.5%;
+}
+
+.tovaihtorahat {
     position: fixed;
-    height: 45%;
-    width: 33.333%;
-    left: 66.666%;
+    left: 85%;
     top: 10%;
-    background-color: hotpink;
+    width: 15%;
+    height: 80%;
+    z-index: 1;
+    background-color: red;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    writing-mode: vertical-lr;
 }
 
-.itembutton4 {
-    position: fixed;
-    height: 45%;
-    width: 33.333%;
-    top: 55%;
-    background-color: magenta;
+.pricefixingbutton , .exitpricechange {
+    position:fixed;
+    background-color: blue;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    top: 90%;
+    left: 85%;
+    width: 15%;
+    height: 10%;
 }
 
-.itembutton5 {
-    position: fixed;
-    height: 45%;
-    width: 33.333%;
-    left: 33.333%;
-    top: 55%;
-    background-color: hotpink;
+.pricepage {
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    flex-direction: column;
 }
 
-.itembutton6 {
-    position: fixed;
-    height: 45%;
-    width: 33.333%;
-    left: 66.666%;
-    top: 55%;
-    background-color: magenta;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.clearbutton {
+.clearbutton , .vaihtorahaamount {
     position: fixed;
     height: 10%;
     width: 33.333%;
     left: 66.666%;
     top: 0px;
     z-index: 1;
-    background-color: red;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.clearbutton {
+    background-color: red;
 }
 
 .tallyandorder {
@@ -121,6 +126,8 @@ a:active {
     height: 10%;
     width: 66.666%;
     top: 0px;
+    display: flex;
+    align-items: center;
 }
 
 .watermark {
@@ -130,9 +137,76 @@ a:active {
     right: 40px;
 }
 
+.snt10 , .snt20 , .snt50 , .e1 , .e2 , .e5 , .e10 , .e20 , .e50 {
+    position: fixed;
+    height: 30%;
+    width: 28.333%;
+    background-color: magenta;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.snt10 , .snt50 , .e2 , .e10 , .e50 {
+    background-color: cadetblue;
+}
+
+
+.snt20 , .e1 , .e5 , .e20 {
+    background-color: mediumseagreen;
+}
+
+.snt10 , .e1 , .e10 {
+    left: 15%;
+}
+
+.snt20 , .e2 , .e20 {
+    left: 43.333%;
+}
+
+.snt50 , .e5 , .e50 {
+    left: 71.666%;
+}
+
+.snt10 , .snt20 , .snt50 {
+    top: 10%;
+}
+
+.e1 , .e2 , .e5 {
+    top: 40%;
+}
+
+.e10 , .e20 , .e50 {
+    top:70%;
+}
+
+.toitemshop {
+    position: fixed;
+    left: 0%;
+    top: 10%;
+    width: 15%;
+    height: 90%;
+    z-index: 1;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-lr;
+}
+
 .calculator {
     -webkit-user-select: none;
     user-select: none;
+}
+
+/* TODO: Just have a button for the price-setting page that's just a fullscreen text editor xdxd, this is the best method... 
+
+Could have that button appear when we have no items on the cart or something IDK!!
+*/
+.priceinput {
+    z-index: 1;
+    position: fixed;
 }
 
 * {
