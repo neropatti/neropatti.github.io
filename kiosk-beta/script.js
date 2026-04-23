@@ -99,23 +99,20 @@ for ([item, price] of Object.entries(prices)) {
     let this_input_id = "numberpriceinput" + String(ii);
     number_input.id = this_input_id;
     let label = document.createElement("label");
+    let div = document.createElement("div");
+    pricepage.appendChild(div);
+    pricepage.appendChild(document.createElement("p"));
+    pricepage.appendChild(document.createElement("p"));
     label.htmlFor = this_input_id;
     label.innerHTML = items[ii];
     number_input.type = "number";
-    pricepage.appendChild(number_input);
-    pricepage.appendChild(label);
+    div.appendChild(label);
+    div.appendChild(number_input);
     let button_count = 6;
     let p = ii / button_count;
-    number_input.style.position = "fixed";
-    label.style.position = "fixed";
     let totalbuttonareaheight = 90;
     let add_y = (100 - totalbuttonareaheight) / 2;
-    let styletop = String(p * totalbuttonareaheight + add_y + 0.5) + "%";
-    let styleheight = String((totalbuttonareaheight * 0.9) / button_count) + "%";
-    number_input.style.top = styletop;
-    number_input.style.height = styleheight;
-    label.style.top = styletop;
-    //label.style.height = styleheight;
+    div.style.height = String((totalbuttonareaheight * 0.9) / button_count) + "%";
     number_input.style.left = "20%";
     // TODO: Retain reference to label
     // TODO: Later use the label to grab the value from iiittt
