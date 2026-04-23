@@ -51,7 +51,7 @@ for (const child of item_buttons.children) {
     if (ii != 6) {
             const item = items[ii];
             const text_node = document.createTextNode("  - " + item + " (0) +  ");
-            const text_node_2 = document.createTextNode("( 0€ )");
+            const text_node_2 = document.createTextNode("( 0.00€ )");
             const text_node_3 = document.createTextNode("");
             const text_node_4 = document.createTextNode(prices[item] + "€ per kpl");
             child.appendChild(text_node_3);
@@ -211,7 +211,7 @@ function update_tally() {
         let [text_node, text_node_2, text_node_3, text_node_4] = text_nodes[item];
         text_node.nodeValue = "  - " + item + " (" + amount + ") +  ";
         let item_price = prices[item] * amount
-        text_node_2.nodeValue = "( " + item_price + "€ )"
+        text_node_2.nodeValue = "( " + item_price.toFixed(2) + "€ )"
         price += item_price;
         text_node_3.nodeValue = emojis[item].repeat(amount);
         text_node_4.nodeValue = prices[item] + "€ per kpl";
@@ -220,5 +220,5 @@ function update_tally() {
         }
         order_text += item + " x" + amount + ", ";
     }
-    tallyandorder.innerText = price + "€ " + order_text;
+    tallyandorder.innerText = price.toFixed(2) + "€ " + order_text;
 }
