@@ -17,6 +17,14 @@ const prices = {
     "sade": 500,
     "--- CLEAR ---": 0.5,
 };
+
+for (const item of items) {
+    let saved_price = localStorage.getItem(item);
+    if (saved_price != null) {
+        prices[item] = saved_price;
+    }
+}
+
 const emojis = {
     "kahvi": "☕️",
     "pulla": "🍰️",
@@ -36,8 +44,6 @@ price_fixing_button.addEventListener("click", priceadjust);
 
 function priceadjust() {
     change_page.bind(2).call();
-    console.log("TESTING TESTING");
-    // TODO: Make the price changing page and switch to that when this button is clicked!!
 }
 
 const page1 = document.getElementById("page1");
@@ -115,10 +121,6 @@ for ([item, price] of Object.entries(prices)) {
     let add_y = (100 - totalbuttonareaheight) / 2;
     div.style.height = String((totalbuttonareaheight * 0.9) / button_count) + "%";
     number_input.style.left = "20%";
-    // TODO: Retain reference to label
-    // TODO: Later use the label to grab the value from iiittt
-    // TODO: Position the label properly
-    // TODO: HAVE NAMES FOR THE LABELS!!
     ii += 1;
 }
 
@@ -145,6 +147,7 @@ function adjust_prices() {
             continue;
         }
         prices[item] = number;
+        localStorage.setItem(item, number)
         // TODO: Update the text saying how much each item costs ("1€ per kpl" for example)
         // TODO: Store shit with cookies!! (and do vaihtorahat lmao)
     }
@@ -156,7 +159,6 @@ change_page.bind(0).call();
 
 function change_page() {
     current_page = this;
-    console.log(current_page);
     var page1style = "none";
     var page2style = "none";
     var pricepagestyle = "none";
@@ -183,6 +185,8 @@ function change_page() {
 }
 
 function click_item(event) {
+    // TODO: Similar function for vaihtorahat!!
+    // TODO: Save orders that have happened so we can look at stats after the event :))
     document.getElementById("calculator").requestFullscreen();
     event.preventDefault();
     //console.log(event.target, "was clicked!");
