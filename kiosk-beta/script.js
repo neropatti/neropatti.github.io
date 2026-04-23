@@ -53,14 +53,15 @@ for (const child of item_buttons.children) {
             const text_node = document.createTextNode("  - " + item + " (0) +  ");
             const text_node_2 = document.createTextNode("( 0€ )");
             const text_node_3 = document.createTextNode("");
+            const text_node_4 = document.createTextNode(prices[item] + "€ per kpl");
             child.appendChild(text_node_3);
             child.appendChild(document.createElement("br"));
             child.appendChild(text_node);
             child.appendChild(document.createElement("br"));
             child.appendChild(text_node_2);
             child.appendChild(document.createElement("br"));
-            child.appendChild(document.createTextNode(prices[item] + "€ per kpl"));
-            text_nodes[items[ii]] = [text_node, text_node_2, text_node_3];
+            child.appendChild(text_node_4);
+            text_nodes[items[ii]] = [text_node, text_node_2, text_node_3, text_node_4];
     }
     //child.append(paragraph);
     ii += 1;
@@ -139,12 +140,15 @@ function adjust_prices() {
         if (item == "--- CLEAR ---") {
             continue;
         }
-        prices[item] = number_inputs[item].value;
-        // TODO: Validate if the value is actually a number
-        // TODO: Update the tally after the prices have been updates (low priority)
+        let number = parseFloat(number_inputs[item].value);
+        if (isNaN(number)) {
+            continue;
+        }
+        prices[item] = number;
         // TODO: Update the text saying how much each item costs ("1€ per kpl" for example)
         // TODO: Store shit with cookies!! (and do vaihtorahat lmao)
     }
+    update_tally();
 }
 
 var current_page = 0;
@@ -194,18 +198,23 @@ function click_item(event) {
         }
     }
     //console.log("Current order:", order_amounts);
+    update_tally();
+}
+
+function update_tally() {
     let price = 0;
     let order_text = "";
     for (const [item, amount] of Object.entries(order_amounts)) {
         if (item == "--- CLEAR ---") {
             continue;
         }
-        let [text_node, text_node_2, text_node_3] = text_nodes[item];
+        let [text_node, text_node_2, text_node_3, text_node_4] = text_nodes[item];
         text_node.nodeValue = "  - " + item + " (" + amount + ") +  ";
         let item_price = prices[item] * amount
         text_node_2.nodeValue = "( " + item_price + "€ )"
         price += item_price;
         text_node_3.nodeValue = emojis[item].repeat(amount);
+        text_node_4.nodeValue = prices[item] + "€ per kpl";
         if (amount == 0) {
             continue;
         }
