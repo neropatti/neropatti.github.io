@@ -105,6 +105,7 @@ for ([item, price] of Object.entries(prices)) {
     number_inputs[item] = number_input;
     let this_input_id = "numberpriceinput" + String(ii);
     number_input.id = this_input_id;
+    number_input.inputmode = "numeric";
     let label = document.createElement("label");
     let div = document.createElement("div");
     pricepage.appendChild(div);
