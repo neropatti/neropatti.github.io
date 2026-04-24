@@ -1,6 +1,6 @@
 console.log("LMAO");
 
-const items = ["kahvi", "pulla", "koira", "kissa", "sammakko", "sade", "--- CLEAR ---"];
+const items = ["kahvi", "tee", "piirakka", "pillimehu", "mokkapala", " ", "--- CLEAR ---"];
 const moneys = ["10snt", "20snt", "50snt", "1€", "2€", "5€", "10€", "20€", "50€"];
 var order_amounts = {};
 function clear_order() {
@@ -13,12 +13,12 @@ function clear_order() {
 }
 clear_order();
 const prices = {
-    "kahvi": 1,
-    "pulla": 2,
-    "koira": 5,
-    "kissa": 3,
-    "sammakko": 8,
-    "sade": 500,
+    "kahvi": 2,
+    "tee": 2,
+    "piirakka": 2,
+    "pillimehu": 1,
+    "mokkapala": 3,
+    " ": 0,
     "--- CLEAR ---": 0,
     "10snt": -0.1,
     "20snt": -0.2,
@@ -40,11 +40,11 @@ for (const item of items) {
 
 const emojis = {
     "kahvi": "☕️",
-    "pulla": "🍰️",
-    "koira": "🐶️",
-    "kissa": "🐈️",
-    "sammakko": "🐸️",
-    "sade": "🌧️",
+    "tee": "🍵",
+    "piirakka": "🥟️",
+    "pillimehu": "🍹️",
+    "mokkapala": "🍰️",
+    " ": " ",
     "--- CLEAR ---": "❌️",
     "10snt": "🪙",
     "20snt": "🪙",
