@@ -128,7 +128,7 @@ document.getElementById("exitpricechange").addEventListener("click", adjust_pric
 
 ii = 0;
 for ([item, price] of Object.entries(prices)) {
-    if (item == "--- CLEAR ---") {
+    if (item == "--- CLEAR ---" || moneys.includes(item)) {
         continue;
     }
     let number_input = document.createElement("input");
@@ -159,7 +159,7 @@ console.log(number_inputs);
 
 function prepare_for_price_adjusting() {
     for ([item, price] of Object.entries(prices)) {
-        if (item == "--- CLEAR ---") {
+        if ((item == "--- CLEAR ---") || moneys.includes(item)) {
             continue;
         }
         let number_input = number_inputs[item];
