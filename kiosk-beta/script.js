@@ -269,8 +269,10 @@ function update_tally() {
     if (current_page == 1) {
         if (price.toFixed(2) == 0.00) {
             used_text = "TASARAHA!! Asiakas antoi " + order_text;
+            // TODO: Display total amount of money that the customer gave us!!
         } else if (price < 0.0) {
             used_text = "VAIHTORAHA: " + Math.abs(price).toFixed(2) + "€. Asiakas antoi " + order_text;
+            // TODO: Display the total amount given here as well!!
         } else {
             used_text = "Maksamatta " + used_text;
         }
