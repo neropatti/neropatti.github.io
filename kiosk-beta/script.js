@@ -1,10 +1,14 @@
 console.log("LMAO");
 
 const items = ["kahvi", "pulla", "koira", "kissa", "sammakko", "sade", "--- CLEAR ---"];
+const moneys = ["10snt", "20snt", "50snt", "1€", "2€", "5€", "10€", "20€", "50€"];
 var order_amounts = {};
 function clear_order() {
     for (const item of items) {
         order_amounts[item] = 0;
+    }
+    for (const money of moneys) {
+        order_amounts[money] = 0;
     }
 }
 clear_order();
@@ -15,7 +19,16 @@ const prices = {
     "kissa": 3,
     "sammakko": 8,
     "sade": 500,
-    "--- CLEAR ---": 0.5,
+    "--- CLEAR ---": 0,
+    "10snt": -0.1,
+    "20snt": -0.2,
+    "50snt": -0.5,
+    "1€": -1,
+    "2€": -2,
+    "5€": -5,
+    "10€": -10,
+    "20€": -20,
+    "50€": -50,
 };
 
 for (const item of items) {
@@ -33,6 +46,15 @@ const emojis = {
     "sammakko": "🐸️",
     "sade": "🌧️",
     "--- CLEAR ---": "❌️",
+    "10snt": "🪙",
+    "20snt": "🪙",
+    "50snt": "🪙",
+    "1€": "🪙",
+    "2€": "🪙",
+    "5€": "🪙",
+    "10€": "💶",
+    "20€": "💶",
+    "50€": "💶",
 };
 const number_inputs = {};
 var text_nodes = {};
@@ -77,8 +99,16 @@ const vaihtoraha_buttons = document.getElementById("vaihtorahabuttons");
 
 ii = 0;
 for (const child of vaihtoraha_buttons.children) {
+    let money = moneys[ii];
+    let t1 = document.createTextNode("0");
+    let t2 = document.createTextNode("");
+    child.appendChild(t2);
     child.appendChild(document.createElement("br"));
-    child.appendChild(document.createTextNode(ii));
+    child.appendChild(document.createTextNode("- " + money + " +"));
+    child.appendChild(document.createElement("br"));
+    child.appendChild(t1);
+    child.addEventListener("click", click_item.bind(money));
+    text_nodes[money] = [t1, t2];
     ii += 1;
 }
 
@@ -166,6 +196,9 @@ function change_page() {
     var tallystyle = "flex";
     if (current_page == 0) {
         page1style = "flex";
+        for (money of moneys) {
+            order_amounts[money] = 0;
+        }
     }
     if (current_page == 1) {
         page2style = "flex";
@@ -183,12 +216,11 @@ function change_page() {
     }
     tallyandorder.style.display = tallystyle;
     pricepage.style.display = pricepagestyle;
+    update_tally()
 }
 
 function click_item(event) {
-    // TODO: Similar function for vaihtorahat!!
-    // TODO: Save orders that have happened so we can look at stats after the event :))
-    document.getElementById("calculator").requestFullscreen();
+    //document.getElementById("calculator").requestFullscreen();
     event.preventDefault();
     //console.log(event.target, "was clicked!");
     let click_x_pos = event.offsetX / event.target.clientWidth;
@@ -213,17 +245,35 @@ function update_tally() {
         if (item == "--- CLEAR ---") {
             continue;
         }
-        let [text_node, text_node_2, text_node_3, text_node_4] = text_nodes[item];
-        text_node.nodeValue = "  - " + item + " (" + amount + ") +  ";
         let item_price = prices[item] * amount
-        text_node_2.nodeValue = "( " + item_price.toFixed(2) + "€ )"
+        if (items.includes(item)) {
+            let [text_node, text_node_2, text_node_3, text_node_4] = text_nodes[item];
+            text_node.nodeValue = "  - " + item + " (" + amount + ") +  ";
+            text_node_2.nodeValue = "( " + item_price.toFixed(2) + "€ )";
+            text_node_3.nodeValue = emojis[item].repeat(amount);
+            text_node_4.nodeValue = prices[item] + "€ per kpl";
+        } else if (moneys.includes(item)) {
+            let [text_node_1, text_node_2] = text_nodes[item];
+            text_node_1.nodeValue = String(amount);
+            text_node_2.nodeValue = emojis[item].repeat(amount);
+        }
         price += item_price;
-        text_node_3.nodeValue = emojis[item].repeat(amount);
-        text_node_4.nodeValue = prices[item] + "€ per kpl";
         if (amount == 0) {
             continue;
         }
-        order_text += item + " x" + amount + ", ";
+        if ((current_page == 0 && items.includes(item)) || (current_page == 1 && moneys.includes(item))) {
+            order_text += item + " x" + amount + ", ";
+        }
     }
-    tallyandorder.innerText = price.toFixed(2) + "€ " + order_text;
+    let used_text = Math.abs(price).toFixed(2) + "€ " + order_text;
+    if (current_page == 1) {
+        if (price.toFixed(2) == 0.00) {
+            used_text = "TASARAHA!! Asiakas antoi " + order_text;
+        } else if (price < 0.0) {
+            used_text = "VAIHTORAHA: " + Math.abs(price).toFixed(2) + "€. Asiakas antoi " + order_text;
+        } else {
+            used_text = "Maksamatta " + used_text;
+        }
+    }
+    tallyandorder.innerText = used_text;
 }
