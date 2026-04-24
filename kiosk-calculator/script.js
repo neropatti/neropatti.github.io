@@ -1,30 +1,60 @@
 console.log("LMAO");
 
-const items = ["kahvi", "pulla", "koira", "kissa", "sammakko", "sade", "--- CLEAR ---"];
+const items = ["kahvi", "tee", "piirakka", "pillimehu", "mokkapala", " ", "--- CLEAR ---"];
+const moneys = ["10snt", "20snt", "50snt", "1€", "2€", "5€", "10€", "20€", "50€"];
 var order_amounts = {};
 function clear_order() {
     for (const item of items) {
         order_amounts[item] = 0;
     }
+    for (const money of moneys) {
+        order_amounts[money] = 0;
+    }
 }
 clear_order();
 const prices = {
-    "kahvi": 1,
-    "pulla": 2,
-    "koira": 5,
-    "kissa": 3,
-    "sammakko": 8,
-    "sade": 500,
-    "--- CLEAR ---": 0.5,
+    "kahvi": 2,
+    "tee": 2,
+    "piirakka": 2,
+    "pillimehu": 1,
+    "mokkapala": 3,
+    " ": 0,
+    "--- CLEAR ---": 0,
+    "10snt": -0.1,
+    "20snt": -0.2,
+    "50snt": -0.5,
+    "1€": -1,
+    "2€": -2,
+    "5€": -5,
+    "10€": -10,
+    "20€": -20,
+    "50€": -50,
 };
+
+for (const item of items) {
+    let saved_price = localStorage.getItem(item);
+    if (saved_price != null) {
+        prices[item] = saved_price;
+    }
+}
+
 const emojis = {
     "kahvi": "☕️",
-    "pulla": "🍰️",
-    "koira": "🐶️",
-    "kissa": "🐈️",
-    "sammakko": "🐸️",
-    "sade": "🌧️",
+    "tee": "🍵",
+    "piirakka": "🥟️",
+    "pillimehu": "🍹️",
+    "mokkapala": "🍰️",
+    " ": " ",
     "--- CLEAR ---": "❌️",
+    "10snt": "🪙",
+    "20snt": "🪙",
+    "50snt": "🪙",
+    "1€": "🪙",
+    "2€": "🪙",
+    "5€": "🪙",
+    "10€": "💶",
+    "20€": "💶",
+    "50€": "💶",
 };
 const number_inputs = {};
 var text_nodes = {};
@@ -36,8 +66,6 @@ price_fixing_button.addEventListener("click", priceadjust);
 
 function priceadjust() {
     change_page.bind(2).call();
-    console.log("TESTING TESTING");
-    // TODO: Make the price changing page and switch to that when this button is clicked!!
 }
 
 const page1 = document.getElementById("page1");
@@ -71,8 +99,16 @@ const vaihtoraha_buttons = document.getElementById("vaihtorahabuttons");
 
 ii = 0;
 for (const child of vaihtoraha_buttons.children) {
+    let money = moneys[ii];
+    let t1 = document.createTextNode("0");
+    let t2 = document.createTextNode("");
+    child.appendChild(t2);
     child.appendChild(document.createElement("br"));
-    child.appendChild(document.createTextNode(ii));
+    child.appendChild(document.createTextNode("- " + money + " +"));
+    child.appendChild(document.createElement("br"));
+    child.appendChild(t1);
+    child.addEventListener("click", click_item.bind(money));
+    text_nodes[money] = [t1, t2];
     ii += 1;
 }
 
@@ -92,13 +128,14 @@ document.getElementById("exitpricechange").addEventListener("click", adjust_pric
 
 ii = 0;
 for ([item, price] of Object.entries(prices)) {
-    if (item == "--- CLEAR ---") {
+    if (item == "--- CLEAR ---" || moneys.includes(item)) {
         continue;
     }
     let number_input = document.createElement("input");
     number_inputs[item] = number_input;
     let this_input_id = "numberpriceinput" + String(ii);
     number_input.id = this_input_id;
+    number_input.inputmode = "numeric";
     let label = document.createElement("label");
     let div = document.createElement("div");
     pricepage.appendChild(div);
@@ -115,10 +152,6 @@ for ([item, price] of Object.entries(prices)) {
     let add_y = (100 - totalbuttonareaheight) / 2;
     div.style.height = String((totalbuttonareaheight * 0.9) / button_count) + "%";
     number_input.style.left = "20%";
-    // TODO: Retain reference to label
-    // TODO: Later use the label to grab the value from iiittt
-    // TODO: Position the label properly
-    // TODO: HAVE NAMES FOR THE LABELS!!
     ii += 1;
 }
 
@@ -126,7 +159,7 @@ console.log(number_inputs);
 
 function prepare_for_price_adjusting() {
     for ([item, price] of Object.entries(prices)) {
-        if (item == "--- CLEAR ---") {
+        if ((item == "--- CLEAR ---") || moneys.includes(item)) {
             continue;
         }
         let number_input = number_inputs[item];
@@ -145,6 +178,7 @@ function adjust_prices() {
             continue;
         }
         prices[item] = number;
+        localStorage.setItem(item, number)
         // TODO: Update the text saying how much each item costs ("1€ per kpl" for example)
         // TODO: Store shit with cookies!! (and do vaihtorahat lmao)
     }
@@ -156,16 +190,18 @@ change_page.bind(0).call();
 
 function change_page() {
     current_page = this;
-    console.log(current_page);
     var page1style = "none";
     var page2style = "none";
     var pricepagestyle = "none";
     var tallystyle = "flex";
     if (current_page == 0) {
         page1style = "flex";
+        for (money of moneys) {
+            order_amounts[money] = 0;
+        }
     }
     if (current_page == 1) {
-        page1style = "flex";
+        page2style = "flex";
     }
     if (current_page == 2) {
         pricepagestyle = "flex";
@@ -180,6 +216,7 @@ function change_page() {
     }
     tallyandorder.style.display = tallystyle;
     pricepage.style.display = pricepagestyle;
+    update_tally()
 }
 
 function click_item(event) {
@@ -208,17 +245,37 @@ function update_tally() {
         if (item == "--- CLEAR ---") {
             continue;
         }
-        let [text_node, text_node_2, text_node_3, text_node_4] = text_nodes[item];
-        text_node.nodeValue = "  - " + item + " (" + amount + ") +  ";
         let item_price = prices[item] * amount
-        text_node_2.nodeValue = "( " + item_price.toFixed(2) + "€ )"
+        if (items.includes(item)) {
+            let [text_node, text_node_2, text_node_3, text_node_4] = text_nodes[item];
+            text_node.nodeValue = "  - " + item + " (" + amount + ") +  ";
+            text_node_2.nodeValue = "( " + item_price.toFixed(2) + "€ )";
+            text_node_3.nodeValue = emojis[item].repeat(amount);
+            text_node_4.nodeValue = prices[item] + "€ per kpl";
+        } else if (moneys.includes(item)) {
+            let [text_node_1, text_node_2] = text_nodes[item];
+            text_node_1.nodeValue = String(amount);
+            text_node_2.nodeValue = emojis[item].repeat(amount);
+        }
         price += item_price;
-        text_node_3.nodeValue = emojis[item].repeat(amount);
-        text_node_4.nodeValue = prices[item] + "€ per kpl";
         if (amount == 0) {
             continue;
         }
-        order_text += item + " x" + amount + ", ";
+        if ((current_page == 0 && items.includes(item)) || (current_page == 1 && moneys.includes(item))) {
+            order_text += item + " x" + amount + ", ";
+        }
     }
-    tallyandorder.innerText = price.toFixed(2) + "€ " + order_text;
+    let used_text = Math.abs(price).toFixed(2) + "€ " + order_text;
+    if (current_page == 1) {
+        if (price.toFixed(2) == 0.00) {
+            used_text = "TASARAHA!! Asiakas antoi " + order_text;
+            // TODO: Display total amount of money that the customer gave us!!
+        } else if (price < 0.0) {
+            used_text = "VAIHTORAHA: " + Math.abs(price).toFixed(2) + "€. Asiakas antoi " + order_text;
+            // TODO: Display the total amount given here as well!!
+        } else {
+            used_text = "Maksamatta " + used_text;
+        }
+    }
+    tallyandorder.innerText = used_text;
 }
