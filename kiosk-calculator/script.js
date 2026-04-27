@@ -7,6 +7,9 @@ if (current_order_id == null) {
 }
 
 // TODO: Load all of the orders so far into a list so that we can inspect them!!
+// Note down the total cost as well, the prices of shit could change ig
+// Also we don't need to note down the current order ID, we can just load until we hit a null and then we know we have loaded everything there is to load
+// ALSO SAVE THE THE TIME THE ORDER WAS CONFIRMED!!!!
 
 for (let i = 0; i < current_order_id; i++) {
   console.log("Order " + String(i) + ": " + localStorage.getItem("order_" + String(i)));
