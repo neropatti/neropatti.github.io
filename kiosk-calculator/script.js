@@ -8,6 +8,10 @@ if (current_order_id == null) {
 
 // TODO: Load all of the orders so far into a list so that we can inspect them!!
 
+for (let i = 0; i < current_order_id; i++) {
+  console.log("Order " + String(i) + ": " + localStorage.getItem("order_" + String(i)));
+}
+
 const items = ["kahvi", "tee", "piirakka", "pillimehu", "mokkapala", " ", "--- CLEAR ---"];
 const moneys = ["10snt", "20snt", "50snt", "1€", "2€", "5€", "10€", "20€", "50€"];
 var order_amounts = {};
@@ -138,6 +142,8 @@ function log_and_clear_order() {
     localStorage.setItem("order_" + String(current_order_id), order_log_string);
     current_order_id += 1;
     localStorage.setItem("next_order_id", current_order_id);
+    clear_order();
+    change_page.bind(0).call();
 }
 
 const page_change_buttons = [document.getElementById("tovaihtorahat"), document.getElementById("toitemshop")];
