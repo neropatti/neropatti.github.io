@@ -105,7 +105,7 @@ a:active {
     flex-direction: column;
 }
 
-.clearbutton , .vaihtorahaamount {
+.clearbutton , .confirmorderbutton {
     position: fixed;
     height: 10%;
     width: 33.333%;
@@ -115,6 +115,10 @@ a:active {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.confirmorderbutton {
+    background-color: green;
 }
 
 .clearbutton {

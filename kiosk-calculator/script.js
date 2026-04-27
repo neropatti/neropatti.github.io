@@ -1,5 +1,13 @@
 console.log("LMAO");
 
+var current_order_id = localStorage.getItem("next_order_id");
+
+if (current_order_id == null) {
+    current_order_id = 0;
+}
+
+// TODO: Load all of the orders so far into a list so that we can inspect them!!
+
 const items = ["kahvi", "tee", "piirakka", "pillimehu", "mokkapala", " ", "--- CLEAR ---"];
 const moneys = ["10snt", "20snt", "50snt", "1€", "2€", "5€", "10€", "20€", "50€"];
 var order_amounts = {};
@@ -110,6 +118,26 @@ for (const child of vaihtoraha_buttons.children) {
     child.addEventListener("click", click_item.bind(money));
     text_nodes[money] = [t1, t2];
     ii += 1;
+}
+
+const confirm_order_button = document.getElementById("confirmorderbutton");
+
+confirm_order_button.addEventListener("click", log_and_clear_order);
+
+function log_and_clear_order() {
+    console.log("LMAOOOOOOOO order log test");
+    let order_log_string = "";
+    for (const [item, amount] of Object.entries(order_amounts)) {
+        if (item == "--- CLEAR ---") {
+            continue;
+        }
+        // We log items that were not in the order, that's fine, makes it easier
+        // to do spreadsheet shenanigans later!!
+        order_log_string += item + "," + String(amount) + "\n"
+    }
+    localStorage.setItem("order_" + String(current_order_id), order_log_string);
+    current_order_id += 1;
+    localStorage.setItem("next_order_id", current_order_id);
 }
 
 const page_change_buttons = [document.getElementById("tovaihtorahat"), document.getElementById("toitemshop")];
