@@ -155,7 +155,7 @@ for ([item, price] of Object.entries(prices)) {
     ii += 1;
 }
 
-console.log(number_inputs);
+//console.log(number_inputs);
 
 function prepare_for_price_adjusting() {
     for ([item, price] of Object.entries(prices)) {
