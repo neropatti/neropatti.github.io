@@ -1,5 +1,34 @@
 console.log("LMAO");
 
+var current_order_id = Number(localStorage.getItem("next_order_id"));
+
+if (current_order_id == null) {
+    current_order_id = 0;
+}
+
+// TODO: Load all of the orders so far into a list so that we can inspect them!!
+// Note down the total cost as well, the prices of shit could change ig
+// Also we don't need to note down the current order ID, we can just load until we hit a null and then we know we have loaded everything there is to load
+
+for (let i = 0; i < current_order_id; i++) {
+    console.log(localStorage.getItem("order_" + String(i)));
+}
+console.log("Current order ID: " + String(current_order_id));
+
+document.getElementById("downloadorderhistory").addEventListener("click", save_order_history);
+
+function save_order_history() {
+    let order_history = "aika,kahvi,tee,piirakka,pillimehu,mokkapala,tyhjä,10snt,20snt,50snt,1€,2€,5€,10€,20€,50€\n";
+    for (let i = 0; i < current_order_id; i++) {
+        order_history += localStorage.getItem("order_" + String(i)) + "\n";
+    }
+    download("tilaukset_" + String(Date.now()) + ".csv", order_history);
+}
+
+/*
+
+*/
+
 const items = ["kahvi", "tee", "piirakka", "pillimehu", "mokkapala", " ", "--- CLEAR ---"];
 const moneys = ["10snt", "20snt", "50snt", "1€", "2€", "5€", "10€", "20€", "50€"];
 var order_amounts = {};
@@ -110,6 +139,27 @@ for (const child of vaihtoraha_buttons.children) {
     child.addEventListener("click", click_item.bind(money));
     text_nodes[money] = [t1, t2];
     ii += 1;
+}
+
+const confirm_order_button = document.getElementById("confirmorderbutton");
+
+confirm_order_button.addEventListener("click", log_and_clear_order);
+
+function log_and_clear_order() {
+    let order_log_string = String(Date.now());
+    for (const [item, amount] of Object.entries(order_amounts)) {
+        if (item == "--- CLEAR ---") {
+            continue;
+        }
+        // We log items that were not in the order, that's fine, makes it easier
+        // to do spreadsheet shenanigans later!!
+        order_log_string += "," + String(amount)
+    }
+    localStorage.setItem("order_" + String(current_order_id), order_log_string);
+    current_order_id += 1;
+    localStorage.setItem("next_order_id", String(current_order_id));
+    clear_order();
+    change_page.bind(0).call();
 }
 
 const page_change_buttons = [document.getElementById("tovaihtorahat"), document.getElementById("toitemshop")];
@@ -278,4 +328,18 @@ function update_tally() {
         }
     }
     tallyandorder.innerText = used_text;
+}
+
+// https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 }
