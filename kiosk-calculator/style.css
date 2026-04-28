@@ -95,6 +95,18 @@ a:active {
     height: 10%;
 }
 
+.downloadorderhistory {
+    position:fixed;
+    background-color: magenta;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0%;
+    left: 0%;
+    width: 15%;
+    height: 10%;
+}
+
 .pricepage {
     top: 0%;
     left: 0%;
