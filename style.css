@@ -25,6 +25,10 @@ a:active {
     color: hotpink
 }
 
+code {
+    background-color:#000000;
+}
+
 .watermark {
     opacity: 0.75;
     position: fixed;
