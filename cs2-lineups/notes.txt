@@ -1,0 +1,1 @@
+ffmpeg -i input.png -lossless 0 -compression_level 6 output.webp
