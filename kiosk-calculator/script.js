@@ -18,7 +18,7 @@ console.log("Current order ID: " + String(current_order_id));
 document.getElementById("downloadorderhistory").addEventListener("click", save_order_history);
 
 function save_order_history() {
-    let order_history = "aika,kahvi,tee,piirakka,pillimehu,mokkapala,tyhjä,10snt,20snt,50snt,1€,2€,5€,10€,20€,50€\n";
+    let order_history = "aika,kahvi,lettu,lettu ja kahvi,pillimehu,vissy,tyhjä,10snt,20snt,50snt,1€,2€,5€,10€,20€,50€\n";
     for (let i = 0; i < current_order_id; i++) {
         order_history += localStorage.getItem("order_" + String(i)) + "\n";
     }
@@ -29,7 +29,7 @@ function save_order_history() {
 
 */
 
-const items = ["kahvi", "tee", "piirakka", "pillimehu", "mokkapala", " ", "--- CLEAR ---"];
+const items = ["kahvi", "lettu", "kahvi ja lettu", "pillimehu", "vissy", " ", "--- CLEAR ---"];
 const moneys = ["10snt", "20snt", "50snt", "1€", "2€", "5€", "10€", "20€", "50€"];
 var order_amounts = {};
 function clear_order() {
@@ -43,10 +43,13 @@ function clear_order() {
 clear_order();
 const prices = {
     "kahvi": 2,
+    "lettu": 4,
+    "kahvi ja lettu": 5,
+    "pillimehu": 1.5,
+    "vissy": 2.5,
     "tee": 2,
-    "piirakka": 2,
-    "pillimehu": 1,
     "mokkapala": 3,
+    "piirakka": 2,
     " ": 0,
     "--- CLEAR ---": 0,
     "10snt": -0.1,
@@ -69,9 +72,12 @@ for (const item of items) {
 
 const emojis = {
     "kahvi": "☕️",
+    "lettu": "🥞",
+    "kahvi ja lettu": "☕️+🥞",
+    "vissy": "🌊",
+    "pillimehu": "🍹️",
     "tee": "🍵",
     "piirakka": "🥟️",
-    "pillimehu": "🍹️",
     "mokkapala": "🍰️",
     " ": " ",
     "--- CLEAR ---": "❌️",
