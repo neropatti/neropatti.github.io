@@ -1,0 +1,10 @@
+#gamediv {
+    font-size: 80px;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.lihas {
+    display: flex;
+}
+
